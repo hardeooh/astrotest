@@ -1,5 +1,16 @@
 ---
+const pageTitle = "About Me"
+const identity = {
+  firstName: "Sarah",
+  country: "Canada",
+  occupation: "Technical Writer",
+  hobbies: ["photography", "birdwatching", "baseball"],
+};
 
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
+const happy = true;
+const finished = false;
+const goal = 3;
 ---
 
 <html lang="en">
@@ -8,7 +19,7 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
     <h1>My Astro Site</h1>
@@ -21,5 +32,30 @@
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
   
     <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
+
+		<p>Here are some facts about me</p>
+
+		<ul>
+			<li>
+				I'm from {identity.country}
+			</li>
+			<li>
+				My name is {identity.firstName}
+			</li>
+			<li>
+				I'm a {identity.occupation}
+			</li>
+			<li>
+				My hobbies are {identity.hobbies.map(e=>e+', ')}
+			</li>
+		</ul>
+
+		<ul>
+			{skills.map(e=><li>{e}</li>)}
+		</ul>
+
+		{happy && <p>Learning Astro yayh!</p>}
+		{finished && <p>finished with this tutorial</p>}
+		{goal > 4 ? <p>I have more than 3 goals</p> : <p>i have less than 3 goals</p>}
 	</body>
 </html>
