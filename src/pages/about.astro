@@ -1,5 +1,6 @@
 ---
-const pageTitle = "About Me"
+import BaseLayout from '../layouts/BaseLayout.astro';
+const pageTitle = "Home Page";
 const identity = {
   firstName: "Sarah",
   country: "Canada",
@@ -11,24 +12,11 @@ const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Writing Docs"];
 const happy = true;
 const finished = false;
 const goal = 3;
+const skillColor = "navy";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{pageTitle}</title>
-	</head>
-	<body>
-    <h1>My Astro Site</h1>
-    <a href="/">Home</a>
-    <a href="/about/">About</a>
-    <a href="/blog">Blog</a>
-    <h1>About Me</h1>
-    <h2>... and my new Astro site!</h2>
-  
+
+<BaseLayout pageTitle={pageTitle}> 
     <p>I am working through Astro's introductory tutorial. This is the second page on my website, and it's the first one I built myself!</p>
   
     <p>This site will update as I complete more of the tutorial, so keep checking back and see how my journey is going!</p>
@@ -51,11 +39,13 @@ const goal = 3;
 		</ul>
 
 		<ul>
-			{skills.map(e=><li>{e}</li>)}
+			{skills.map((skill) => <li class="skill">{skill}</li>)}
 		</ul>
 
 		{happy && <p>Learning Astro yayh!</p>}
 		{finished && <p>finished with this tutorial</p>}
 		{goal > 4 ? <p>I have more than 3 goals</p> : <p>i have less than 3 goals</p>}
-	</body>
-</html>
+		<script>
+    import "../scripts/menu.js";
+		</script>
+	</BaseLayout>
